@@ -10,6 +10,9 @@ from pygame.locals import *
 import random
 import pygame.gfxdraw
 
+#import _UIModule.Button as Button
+from _UIModule import Button as test
+
 ##################################################################################################
 #   Global Attributes
 ##################################################################################################
@@ -86,6 +89,8 @@ if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode(size,HWSURFACE|DOUBLEBUF|RESIZABLE)
 
+    test.test()
+
     bg = pygame.image.load(filename)
     bg = pygame.transform.scale(bg, (display_w, display_h))
 
@@ -116,7 +121,8 @@ if __name__ == '__main__':
 ##################################################################################################
     while True:
         pygame.event.pump()
-        print clock.get_fps()
+        if debug_lv2:
+            print clock.get_fps()
         events = pygame.event.get()
 
         # Refresh Screen
@@ -131,8 +137,6 @@ if __name__ == '__main__':
         screen.blit(title_msg, (display_w/25, display_h/15))
 
         # Generate Button
-        #if pygame.MOUSEMOTION not in events:
-        #if not (pygame.MOUSEMOTION in event.type for event in events):
         mouse_motion = False
         for event in events:
             if event.type is pygame.MOUSEMOTION:
@@ -140,7 +144,6 @@ if __name__ == '__main__':
                 break
 
         if not mouse_motion:
-            print 'NO MOUSE EVENT, DRAWING BUTTON'
             """
             if ((quit_loc_x() < pygame.mouse.get_pos()[0] < (quit_w + quit_loc_x())) and
                     quit_loc_y() < pygame.mouse.get_pos()[1] < (quit_h + quit_loc_y()) ):
@@ -180,7 +183,6 @@ if __name__ == '__main__':
 #   Event Loop
 ##################################################################################################
         for event in events:
-            print event
             if event.type == pygame.QUIT:
                 pygame.display.quit()
 
