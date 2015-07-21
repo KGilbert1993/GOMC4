@@ -1,0 +1,9 @@
+('C:\\Users\\splee_000\\Documents\\Python Scripts\\game_dev\\dev2\\dist\\dev2.exe',
+ True,
+ False,
+ None,
+ None,
+ [],
+ None,
+ False,
+ 1436246515L)
