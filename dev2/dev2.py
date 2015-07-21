@@ -11,7 +11,7 @@ import random
 import pygame.gfxdraw
 
 #import _UIModule.Button as Button
-from _UIModule import Button as test
+from _UIModule import Buttons
 
 ##################################################################################################
 #   Global Attributes
@@ -89,7 +89,8 @@ if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode(size,HWSURFACE|DOUBLEBUF|RESIZABLE)
 
-    test.test()
+    Buttons.test()
+    x = Buttons.Button(screen, 80, 50, 400, 300, BUTTON_IMG)
 
     bg = pygame.image.load(filename)
     bg = pygame.transform.scale(bg, (display_w, display_h))
@@ -135,6 +136,8 @@ if __name__ == '__main__':
         # Generate Text
         title_msg = title.render("Galatic Ocarina of Metroid Combat 4: Modern Windwaker", 5, (255,255,0))
         screen.blit(title_msg, (display_w/25, display_h/15))
+
+        x.draw()
 
         # Generate Button
         mouse_motion = False
