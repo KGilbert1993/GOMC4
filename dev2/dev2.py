@@ -28,7 +28,7 @@ green = (0,200,0, 50)
 red = (200,0,0, 50)
 grey = (160,160,160,70)
 filename = "img/space1.jpg"
-BUTTON_IMG = "img/button2.png"
+BUTTON_IMG = "dev2\\img\\button2.png"
 EXIT_GR = "img/exit_green.jpg"
 EXIT_RED = "img/exit_red.jpg"
 font_size = 12
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size,HWSURFACE|DOUBLEBUF|RESIZABLE)
 
     Buttons.test()
-    x = Buttons.Button(screen, 80, 50, 400, 300, BUTTON_IMG)
+    x = Buttons.Button(pygame.display.get_surface(), 80, 50, 400, 300, BUTTON_IMG)
 
     bg = pygame.image.load(filename)
     bg = pygame.transform.scale(bg, (display_w, display_h))

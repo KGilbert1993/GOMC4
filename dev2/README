@@ -1,0 +1,43 @@
+Dev2.py looks a bit scary at first but that's largely due to me throwing things around and learning how to use PyGame. I'll go over some basics and walk through what's happening step by step. There's quite a bit to work on so whatever you want to play with just let me know. This is to have fun and learn so if you're not really enjoying it we can switch to something else.
+
+Best place to start would be getting you all of the necessary files and build tools. This is where Python is really nice as a language since it doesn't really have build tools, just the run time environment. You can download Python and launch it (I'm currently running Python 2.7). It'll provide you with a command prompt where you can either run python commands or call python scripts (like dev2.py). In addition you'll need PyGame which is the external library I'm using to handle all of the graphics. You can get it here:
+
+http://www.pygame.org/download.shtml
+
+Whatever I have pushed to the master branch on GitHub should always be able to run, so if you pull it, open up a windows command prompt (search 'cmd' in your windows search bar) and navigate to the download directory (you can also shift click in the directory and select open command window here if you don't know how to navigate directories from the command line) you can run the command "python dev2.py" to execute it.
+
+To actually get the dev files from Github, you have three options: (1) GitBash commandline tool, (2) TortoiseGit windows plugin, (3) GitGUI. Git bash (1) is what I use but may be a bit ugly to pick up. I think (2) would be easiest but I'm also not a huge fan of the GUI. The second one will let you right click on a directory and have the Git tools show up in the windows right click menu. You can initialize directories, pull, push, merge, etc from there. I'd recommend going over the GitHub tutorials really quickly just to get the concepts in place and learn how to use the toolset really quickly. I'll talk a bit about Git bash commands below because I'm more familiar with those and they should translate pretty closely to what commands you'll use in whatever option you use above.
+
+--> Git Concepts
+	Git is an example of a version control tool. Think of it as a dropbox or google drive where files are stored online on a server, but here the history is preserved. People can pull files off of this online storage to their local machines and modify them. If they want to push their changes back to the online server for everyone to see and copy over to their own local instances, they can do that easily. If a mistake was made, you can revert back to previous states. Additionally you have things called branches. The Master branch is the default, top level branch. This is where you start off. You "branch" off of the master line, which means you take a copy of the drive and make a new one alongside it in a sense. Whatever changes you make and push online to this seperate branch (you can have multiple) will only be reflected in this side branch, not in Master. An example would be having a Master and a Dev (development) branch. Master will always be buildable and stable, whereas you can push and test new features to the Dev branch. Once the changes you made are stable and tested, you can merge the branches. This updates the Master branch with the new contents from the other line (Dev in this case). It can be a bit of a weird concept to get a grasp of a first but it's very powerful and helpful.
+
+	I will make a Dev branch specifically for you so you can change whatever you want and push things to the new branch without causing damage so don't by shy with updating. Let's say there's a branch called 'ave-dev'. If I were using Git Bash (again the other tools will have similar names, you just don't need to type them out), I would call these commands to get started.
+
+		+ Navigate to new (empty) directory
+		+ 'git init'
+		+ 'git remote add origin master https://github/kgilbert1993/GOMC4.git'		// or whatever the link is for the repo you want
+		+  'git pull origin [BRANCH NAME]'
+			- For example: git pull origin master
+			- or:		   git pull origin ave-dev
+
+	And that's it, you have the files! Origin refers to the "remote", which is essentially a reference to where the online repository is stored, so if you had a different remote (unlikely if you're sticking with the basics), you could do 'git pull otherremote master', etc.
+
+	Now let's say you edited some files on your local computer, and it's looking good! You can update the online drive so I can see it with the following command format:
+		+ 'git add [MODIFIED FILES\FOLDERS'
+			- for example say you modified dev2.py and added a file new.py. The command would be 'git add dev2.py new.py'
+			- You can run git add multiple times, it'll just add the new files to the pending change list.
+			- You can also call 'git rm *blah*' to remove files
+		+ 'git commit'
+			- This commits your changes. Your online changes will not yet be reflected online, but you need to do this to compile your changelist. A window will pop up asking you for a commit message. Whenever you update the repo you need to include a message describing what you changed. These can vary in detail from 'added file or did some stuff' to a paragraph describing things. You can view the changes so you don't need to be super specific unless it was a conceptual change that's hard to get from just viewing the code.
+		+ 'git push origin [BRANCH NAME]'
+			- Same as pulling. 'git push origin ave-dev'
+
+	And that's it! The basic operations then are:
+		+ init (only need to do this once!)
+		+ pulling [get files from remote server to local build]
+		+ adding [add new OR modified files to changelist]
+		+ commiting [Generate commit message and prepare to push]
+		+ push [Update online repo with local changes]
+
+	Those are the basics of using Git! Again, I'd go over online tutorials if you get stuck or let me know if you have any questions.
+
