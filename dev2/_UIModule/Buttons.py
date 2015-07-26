@@ -16,6 +16,7 @@ class Button(object):
     y = 0
     img = None
     window = None
+    onclick_func = staticmethod(test)   # TODO
 
     def __init__(self, window, w, h, x, y, image):
         self.width = w
@@ -24,9 +25,7 @@ class Button(object):
         self.y = y
         self.window = window
         print os.path.dirname(os.path.realpath(__file__))
-        print os.path.join(os.path.abspath('dev2'), 'img\\button2.png')
-        print os.path.join(os.path.abspath('dev2.py'), 'img\\button2.png')
-        self.img = pygame.image.load('button2.png')
+        self.img = pygame.image.load(image)
         self.img = pygame.transform.scale(self.img, (self.width, self.height))
         self.window.blit(self.img, (self.x, self.y))
 
@@ -34,5 +33,9 @@ class Button(object):
         pygame.draw.rect(self.window, green, (self.x-1, self.y-1, self.width+1, self.height+1), 4)
         self.window.blit(self.img, (self.x, self.y))
 
+    def attach_callback(self):
+        print 'attaching callback'
+
     def on_click(self):
         print 'on clicking'
+

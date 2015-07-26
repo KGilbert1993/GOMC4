@@ -1,7 +1,7 @@
 """
     Game Dev Test 2
-    Current Revision: 5
-    5 July 2015
+    Current Revision: 7
+    26 July 2015
 """
 
 import os
@@ -10,37 +10,25 @@ from pygame.locals import *
 import random
 import pygame.gfxdraw
 
-#import _UIModule.Button as Button
-from _UIModule import Buttons
+#   Custom Modules
+from _UIModule import buttons
+from _UIModule.constants import *
+from game_constants import *
+
 
 ##################################################################################################
 #   Global Attributes
 ##################################################################################################
 debug = False
 debug_lv2 = False
+debug_fps = False
 
-SCREEN_RATE = 60
-size = display_w, display_h = 800, 600
-scale = 1,1
-quit_w = 53
-quit_h = 20
-green = (0,200,0, 50)
-red = (200,0,0, 50)
-grey = (160,160,160,70)
-filename = "img/space1.jpg"
-BUTTON_IMG = "img/button2.png"
-EXIT_GR = "img/exit_green.jpg"
-EXIT_RED = "img/exit_red.jpg"
-font_size = 12
-test_box_w = 180 - 2 
-test_box_h = 125 - 2
-line_ep1 = [10, 10, 1, 1.2]   # (x, y, speed_x, speed_y)
-line_ep2 = [20, 60, 1.1, -2]
-CURSOR_SIZE = 5
+
 
 ##################################################################################################
 #   Update Functions
 ##################################################################################################
+"""
 def quit_loc_x():
     return (display_w - (display_w/20)) - quit_w
 
@@ -56,6 +44,7 @@ def update_constants():
     quit_h = display_h/30
     if debug:
        print info, ' (', display_w, ',', display_h, ') (', quit_w, ',', quit_h, ')'
+"""
 
 def move_line():
     global line_ep1, line_ep2
@@ -89,10 +78,11 @@ if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode(size,HWSURFACE|DOUBLEBUF|RESIZABLE)
 
-    Buttons.test()
-    x = Buttons.Button(screen, 50, 30, 400, 300, BUTTON_IMG)
+    buttons.test()
+    settings = buttons.Button(screen, 90, 25, 75, 115, SETTINGS_IMG)
+    settings_g = buttons.Button(screen, 90, 25, 75, 115, SETTINGS_G_IMG)
 
-    bg = pygame.image.load(filename)
+    bg = pygame.image.load(BACKGROUND_IMG)
     bg = pygame.transform.scale(bg, (display_w, display_h))
 
     exit_r = pygame.image.load(EXIT_RED).convert(24)
@@ -122,7 +112,7 @@ if __name__ == '__main__':
 ##################################################################################################
     while True:
         pygame.event.pump()
-        if debug_lv2:
+        if debug_fps:
             print clock.get_fps()
         events = pygame.event.get()
 
@@ -135,9 +125,11 @@ if __name__ == '__main__':
 
         # Generate Text
         title_msg = title.render("Galatic Ocarina of Metroid Combat 4: Modern Windwaker", 5, (255,255,0))
-        screen.blit(title_msg, (display_w/25, display_h/15))
+        screen.blit(title_msg, (display_w/5, display_h/20))
 
-        x.draw()
+        # Settings Box
+        pygame.draw.rect(screen, grey, (30,100,180,275), 2)
+        pygame.gfxdraw.box(screen, pygame.Rect(30, 100, 180, 275), grey)
 
         # Generate Button
         mouse_motion = False
@@ -147,15 +139,6 @@ if __name__ == '__main__':
                 break
 
         if not mouse_motion:
-            """
-            if ((quit_loc_x() < pygame.mouse.get_pos()[0] < (quit_w + quit_loc_x())) and
-                    quit_loc_y() < pygame.mouse.get_pos()[1] < (quit_h + quit_loc_y()) ):
-                pygame.draw.rect(screen, green, (quit_loc_x(), quit_loc_y(), quit_w, quit_h), 2)
-                pygame.gfxdraw.box(screen, pygame.Rect(quit_loc_x(), quit_loc_y(), quit_w, quit_h), green)
-            else:
-                pygame.draw.rect(screen, red, (quit_loc_x(), quit_loc_y(), quit_w, quit_h), 2)
-                pygame.gfxdraw.box(screen, pygame.Rect(quit_loc_x(), quit_loc_y(), quit_w, quit_h), red)
-            """
             if ((quit_loc_x() < pygame.mouse.get_pos()[0] < (quit_w + quit_loc_x())) and
                 quit_loc_y() < pygame.mouse.get_pos()[1] < (quit_h + quit_loc_y()) ):
                 pygame.draw.rect(screen, green, (quit_loc_x(), quit_loc_y(), quit_w, quit_h), 2)
@@ -163,6 +146,12 @@ if __name__ == '__main__':
             else:
                 pygame.draw.rect(screen, red, (quit_loc_x(), quit_loc_y(), quit_w, quit_h), 2)
                 screen.blit(exit_r, (quit_loc_x(), quit_loc_y()))
+
+            if ((pygame.mouse.get_pos()[0] > 80 and pygame.mouse.get_pos()[0] < 160) and (
+                pygame.mouse.get_pos()[1] > 115 and pygame.mouse.get_pos()[1] < 140)):
+                settings_g.draw()
+            else:
+                settings.draw()
 
         # Generate visual test box
         pygame.draw.rect(screen, grey, (30,450,180,125), 2)
@@ -201,15 +190,6 @@ if __name__ == '__main__':
                 if debug:
                    print quit_w, ' ', quit_h
                    print 'Box: ', quit_loc_x(), ',', quit_w + quit_loc_x(), 'Mouse: ', pygame.mouse.get_pos()
-                """
-                if ((quit_loc_x() < pygame.mouse.get_pos()[0] < (quit_w + quit_loc_x())) and 
-                        quit_loc_y() < pygame.mouse.get_pos()[1] < (quit_h + quit_loc_y()) ):
-                    pygame.draw.rect(screen, green, (quit_loc_x(), quit_loc_y(), quit_w, quit_h), 2)
-                    pygame.gfxdraw.box(screen, pygame.Rect(quit_loc_x(), quit_loc_y(), quit_w, quit_h), green)
-                else:
-                    pygame.draw.rect(screen, red, (quit_loc_x(), quit_loc_y(), quit_w, quit_h), 2)
-                    pygame.gfxdraw.box(screen, pygame.Rect(quit_loc_x(), quit_loc_y(), quit_w, quit_h), red)
-                """
                 if ((quit_loc_x() < pygame.mouse.get_pos()[0] < (quit_w + quit_loc_x())) and
                     quit_loc_y() < pygame.mouse.get_pos()[1] < (quit_h + quit_loc_y()) ):
                     pygame.draw.rect(screen, green, (quit_loc_x(), quit_loc_y(), quit_w, quit_h), 2)
@@ -217,6 +197,12 @@ if __name__ == '__main__':
                 else:
                     pygame.draw.rect(screen, red, (quit_loc_x(), quit_loc_y(), quit_w, quit_h), 2)
                     screen.blit(exit_r, (quit_loc_x(), quit_loc_y()))
+
+                if ((pygame.mouse.get_pos()[0] > 80 and pygame.mouse.get_pos()[0] < 160) and (
+                    pygame.mouse.get_pos()[1] > 115 and pygame.mouse.get_pos()[1] < 140)):
+                    settings_g.draw()
+                else:
+                    settings.draw()
 
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
