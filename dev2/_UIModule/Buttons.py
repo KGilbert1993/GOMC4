@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+import os, sys
 
 green = (0,200,0, 50)
 red = (200,0,0, 50)
@@ -13,7 +14,7 @@ class Button(object):
     height = 0
     x = 0
     y = 0
-    img = pygame.Surface
+    img = None
     window = None
 
     def __init__(self, window, w, h, x, y, image):
@@ -22,16 +23,16 @@ class Button(object):
         self.x = x
         self.y = y
         self.window = window
-        self.img = pygame.image.load(image)
-        self.img = pygame.transform.scale(self.window, (self.width, self.height))
-
-        disp = screen = pygame.display.set_mode(size,HWSURFACE|DOUBLEBUF|RESIZABLE)
-        disp.blit(self.img, (self.x, self.y))
-        disp.display.update()
+        print os.path.dirname(os.path.realpath(__file__))
+        print os.path.join(os.path.abspath('dev2'), 'img\\button2.png')
+        print os.path.join(os.path.abspath('dev2.py'), 'img\\button2.png')
+        self.img = pygame.image.load('button2.png')
+        self.img = pygame.transform.scale(self.img, (self.width, self.height))
+        self.window.blit(self.img, (self.x, self.y))
 
     def draw(self):
-        pygame.draw.rect(self.window, green, (self.x, self.y, self.width, self.height), 2)
-        #self.window.blit(self.img, (self.x, self.y))
+        pygame.draw.rect(self.window, green, (self.x-1, self.y-1, self.width+1, self.height+1), 4)
+        self.window.blit(self.img, (self.x, self.y))
 
     def on_click(self):
         print 'on clicking'

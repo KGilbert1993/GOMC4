@@ -90,7 +90,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size,HWSURFACE|DOUBLEBUF|RESIZABLE)
 
     Buttons.test()
-    x = Buttons.Button(screen, 80, 50, 400, 300, BUTTON_IMG)
+    x = Buttons.Button(screen, 50, 30, 400, 300, BUTTON_IMG)
 
     bg = pygame.image.load(filename)
     bg = pygame.transform.scale(bg, (display_w, display_h))
@@ -225,6 +225,7 @@ if __name__ == '__main__':
                     if debug:
                         print 'Exiting...'
                     pygame.display.quit()
+
 
         pygame.display.update()
         clock.tick(SCREEN_RATE)
