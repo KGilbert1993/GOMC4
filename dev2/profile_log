@@ -1,0 +1,24 @@
+         3795 function calls in 4.888 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      324    4.367    0.013    4.367    0.013 {method 'blit' of 'pygame.Surface' objects}
+      243    0.333    0.001    0.333    0.001 {pygame.transform.scale}
+       80    0.090    0.001    0.090    0.001 {pygame.display.update}
+      198    0.086    0.000    0.086    0.000 {pygame.gfxdraw.box}
+       81    0.000    0.000    0.006    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\buttons.py:32(draw)
+      360    0.004    0.000    0.004    0.000 {pygame.draw.rect}
+       81    0.003    0.000    0.003    0.000 {pygame.event.pump}
+      437    0.002    0.000    0.002    0.000 {pygame.draw.line}
+       81    0.001    0.000    0.001    0.000 {pygame.event.get}
+       81    0.001    0.000    0.001    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\dev2.py:37(move_line)
+       80    0.001    0.000    0.001    0.000 {method 'tick' of 'Clock' objects}
+     1247    0.000    0.000    0.000    0.000 {pygame.mouse.get_pos}
+       29    0.000    0.000    0.000    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:20(update_constants)
+      263    0.000    0.000    0.000    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:14(quit_loc_x)
+      180    0.000    0.000    0.000    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:17(quit_loc_y)
+       29    0.000    0.000    0.000    0.000 {pygame.display.Info}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
