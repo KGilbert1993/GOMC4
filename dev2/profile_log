@@ -1,24 +1,43 @@
-         3795 function calls in 4.888 seconds
+         26798 function calls in 32.338 seconds
 
    Ordered by: cumulative time
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-      324    4.367    0.013    4.367    0.013 {method 'blit' of 'pygame.Surface' objects}
-      243    0.333    0.001    0.333    0.001 {pygame.transform.scale}
-       80    0.090    0.001    0.090    0.001 {pygame.display.update}
-      198    0.086    0.000    0.086    0.000 {pygame.gfxdraw.box}
-       81    0.000    0.000    0.006    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\buttons.py:32(draw)
-      360    0.004    0.000    0.004    0.000 {pygame.draw.rect}
-       81    0.003    0.000    0.003    0.000 {pygame.event.pump}
-      437    0.002    0.000    0.002    0.000 {pygame.draw.line}
-       81    0.001    0.000    0.001    0.000 {pygame.event.get}
-       81    0.001    0.000    0.001    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\dev2.py:37(move_line)
-       80    0.001    0.000    0.001    0.000 {method 'tick' of 'Clock' objects}
-     1247    0.000    0.000    0.000    0.000 {pygame.mouse.get_pos}
-       29    0.000    0.000    0.000    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:20(update_constants)
-      263    0.000    0.000    0.000    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:14(quit_loc_x)
-      180    0.000    0.000    0.000    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:17(quit_loc_y)
-       29    0.000    0.000    0.000    0.000 {pygame.display.Info}
+     2205   27.920    0.013   27.920    0.013 {method 'blit' of 'pygame.Surface' objects}
+     1545    3.053    0.002    3.053    0.002 {pygame.transform.scale}
+     1175    0.629    0.001    0.629    0.001 {pygame.gfxdraw.box}
+      514    0.615    0.001    0.615    0.001 {pygame.display.update}
+      660    0.004    0.000    0.072    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\buttons.py:32(draw)
+     2350    0.035    0.000    0.035    0.000 {pygame.draw.rect}
+      515    0.021    0.000    0.021    0.000 {pygame.event.pump}
+     2624    0.018    0.000    0.018    0.000 {pygame.draw.line}
+      518    0.009    0.000    0.018    0.000 C:\Users\splee_000\Anaconda\lib\ConfigParser.py:590(get)
+      515    0.008    0.000    0.008    0.000 {pygame.event.get}
+      518    0.006    0.000    0.006    0.000 C:\Users\splee_000\Anaconda\lib\ConfigParser.py:570(__getitem__)
+      515    0.005    0.000    0.005    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\dev2.py:39(move_line)
+      514    0.004    0.000    0.004    0.000 {method 'tick' of 'Clock' objects}
+     7559    0.002    0.000    0.002    0.000 {pygame.mouse.get_pos}
+     1580    0.002    0.000    0.002    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:14(quit_loc_x)
+      518    0.001    0.000    0.001    0.000 C:\Users\splee_000\Anaconda\lib\ConfigParser.py:657(_interpolate)
+      520    0.001    0.000    0.001    0.000 C:\Users\splee_000\Anaconda\lib\ConfigParser.py:373(optionxform)
+      129    0.001    0.000    0.001    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:20(update_constants)
+        2    0.001    0.000    0.001    0.000 {open}
+     1090    0.001    0.000    0.001    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\constants.py:17(quit_loc_y)
+      518    0.001    0.000    0.001    0.000 C:\Users\splee_000\Anaconda\lib\ConfigParser.py:567(__init__)
+      520    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'close' of 'file' objects}
+      129    0.000    0.000    0.000    0.000 {pygame.display.Info}
+        2    0.000    0.000    0.000    0.000 {pygame.mouse.set_visible}
+        2    0.000    0.000    0.000    0.000 C:\Users\splee_000\Anaconda\lib\ConfigParser.py:399(write)
+        2    0.000    0.000    0.000    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\buttons.py:40(handle_event)
+        2    0.000    0.000    0.000    0.000 C:\Users\splee_000\Anaconda\lib\ConfigParser.py:388(set)
+        4    0.000    0.000    0.000    0.000 C:\Users\splee_000\Anaconda\lib\collections.py:108(items)
+       20    0.000    0.000    0.000    0.000 C:\Users\splee_000\Anaconda\lib\collections.py:73(__iter__)
+       14    0.000    0.000    0.000    0.000 {method 'write' of 'file' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\splee_000\Documents\Python Scripts\game_dev\dev2\_UIModule\buttons.py:9(test)
+        2    0.000    0.000    0.000    0.000 C:\Users\splee_000\Anaconda\lib\collections.py:54(__setitem__)
+        6    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        6    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
 
 

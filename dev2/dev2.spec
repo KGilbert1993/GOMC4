@@ -11,6 +11,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           name='dev2.exe',
+          icon='icon.ico'
           debug=False,
           strip=None,
           upx=True,

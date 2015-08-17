@@ -8,6 +8,7 @@
 SCREEN_RATE = 120
 size = display_w, display_h = 1920, 1080
 scale = 1,1
+config = None
 font_size = 12
 test_box_w = 180 - 2 
 test_box_h = 125 - 2
@@ -32,3 +33,5 @@ EXIT_RED = "img/exit_red.jpg"
 SETTINGS_IMG = "img/settings.png"
 SETTINGS_G_IMG = "img/settings_g.png"
 TITLE = "img/title.png"
+
+CONFIG_FILE = 'config.ini'

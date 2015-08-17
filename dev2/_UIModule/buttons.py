@@ -34,12 +34,17 @@ class Button(object):
         self.window.blit(self.img, (self.x, self.y))
 
     def attach_callback(self, func):
-        print 'attaching callback'
         self.onclick_func = func
 
     def handle_event(self, event):
-        print 'on clicking'
         self.onclick_func()
+
+    def region_check(self):
+        if (self.x < pygame.mouse.get_pos()[0] < (self.width + self.x) and
+            self.y < pygame.mouse.get_pos()[1] < (self.height + self.y)):
+            return True
+        else:
+            return False
 
 
 class Palette(object):
