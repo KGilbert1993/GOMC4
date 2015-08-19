@@ -30,7 +30,7 @@ class Button(object):
         self.window.blit(self.img, (self.x, self.y))
 
     def draw(self):
-        pygame.draw.rect(self.window, green, (self.x-1, self.y-1, self.width+1, self.height+1), 4)
+        pygame.draw.rect(self.window, grey, (self.x-1, self.y-1, self.width+1, self.height+1), 4)
         self.window.blit(self.img, (self.x, self.y))
 
     def attach_callback(self, func):

@@ -14,7 +14,7 @@ test_box_w = 180 - 2
 test_box_h = 125 - 2
 line_ep1 = [10, 10, 3, 5.2]   # (x, y, speed_x, speed_y)
 line_ep2 = [20, 60, 4.2, -7]
-CURSOR_SIZE = 5
+CURSOR_SIZE = 6
 
 ##################################################################################################
 #   Color Definitions
@@ -33,5 +33,9 @@ EXIT_RED = "img/exit_red.jpg"
 SETTINGS_IMG = "img/settings.png"
 SETTINGS_G_IMG = "img/settings_g.png"
 TITLE = "img/title.png"
+CHANGE_CURSOR = "img/change_cursor.png"
+CHANGE_CURSOR_SEL = "img/change_cursor_select.png"
+NEW_GAME = "img/new_game.png"
+NEW_GAME_SEL = "img/new_game_select.png"
 
 CONFIG_FILE = 'config.ini'

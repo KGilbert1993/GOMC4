@@ -1,8 +1,8 @@
 """
     Game Dev Test 2
-    Current Revision: 8
+    Current Revision: 10
     Start: 05 June 2015
-    Edit: 01 August 2015
+    Edit: 18 August 2015
 """
 
 import os
@@ -18,6 +18,7 @@ from _UIModule import buttons
 from _UIModule.constants import *
 from _UIModule.inputbox import *
 from game_constants import *
+from game import *
 
 ##################################################################################################
 #   Global Attributes
@@ -77,6 +78,9 @@ def settings_handle():
     global expand_settings
     expand_settings = not expand_settings
 
+def new_game_handle():
+    start_game(screen)
+
 ##################################################################################################
 #   Main
 ##################################################################################################
@@ -90,12 +94,17 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode(size,HWSURFACE|DOUBLEBUF|RESIZABLE|FULLSCREEN)
 
     buttons.test()
-    settings = buttons.Button(screen, 90, 25, 75, 115, SETTINGS_IMG)
-    settings_g = buttons.Button(screen, 90, 25, 75, 115, SETTINGS_G_IMG)
+    settings = buttons.Button(screen, 100, 25, 75, 115, SETTINGS_IMG)
+    settings_g = buttons.Button(screen, 100, 25, 75, 115, SETTINGS_G_IMG)
     settings.attach_callback(settings_handle)
 
-    cursor_button = buttons.Button(screen, 90, 25, 350, 130, 'img/space1.jpg')
+    cursor_button = buttons.Button(screen, 150, 25, 335, 130, CHANGE_CURSOR)
+    cursor_button_sel = buttons.Button(screen, 150, 25, 335, 130, CHANGE_CURSOR_SEL)
     cursor_button.attach_callback(cursor_handle)
+
+    new_game = buttons.Button(screen, 100, 25, 75, 160, NEW_GAME)
+    new_game_sel = buttons.Button(screen, 100, 25, 75, 160, NEW_GAME_SEL)
+    new_game_sel.attach_callback(new_game_handle)
 
     bg = pygame.image.load(BACKGROUND_IMG).convert(24)
     bg = pygame.transform.scale(bg, (display_w, display_h))
@@ -118,6 +127,7 @@ if __name__ == '__main__':
 
     button_list.append(settings)
     button_list.append(cursor_button)
+    button_list.append(new_game_sel)
 
     if debug:
        print 'debugging!'
@@ -130,11 +140,13 @@ if __name__ == '__main__':
 
     pygame.display.flip()
 
-    a = ask(screen, "Name")
-    config.set('User', 'Name', a)
-    conf_file = open(CONFIG_FILE, 'w')
-    config.write(conf_file)
-    conf_file.close()
+
+#    a = ask(screen, "Name")
+#    config.set('User', 'Name', a)
+#    conf_file = open(CONFIG_FILE, 'w')
+#    config.write(conf_file)
+#    conf_file.close()
+
 
     if (profile):
         pr = cProfile.Profile()
@@ -166,11 +178,14 @@ if __name__ == '__main__':
         pygame.gfxdraw.box(screen, pygame.Rect(30, 100, 180, 275), grey)
 
         if(expand_settings):
-            pygame.gfxdraw.box(screen, pygame.Rect(235, 113, 350, 462), green)
-            pygame.draw.rect(screen, green, (235, 113, 350, 462), 2)
-            pygame.draw.line(screen, green, (75,113), (235, 113), 2)
+            pygame.gfxdraw.box(screen, pygame.Rect(235, 115, 350, 460), green)
+            pygame.draw.rect(screen, green, (235, 115, 350, 460), 2)
+            pygame.draw.line(screen, green, (75,115), (235, 115), 2)
 
-            cursor_button.draw()
+            if (cursor_button.region_check()):
+                cursor_button_sel.draw()
+            else:
+                cursor_button.draw()
 
         # Generate Button
         mouse_motion = False
@@ -193,6 +208,11 @@ if __name__ == '__main__':
                 settings_g.draw()
             else:
                 settings.draw()
+
+            if (new_game.region_check()):
+                new_game_sel.draw()
+            else:
+                new_game.draw()
 
         # Generate visual test box
         pygame.draw.rect(screen, grey, (30,450,180,125), 2)
@@ -238,22 +258,46 @@ if __name__ == '__main__':
                     settings_g.draw()
                 else:
                     settings.draw()
+ 
+                if (new_game.region_check()):
+                    new_game_sel.draw()
+                else:
+                    new_game.draw()
+
+                if (cursor_button.region_check() and expand_settings):
+                    cursor_button_sel.draw()
+                elif(expand_settings):
+                    cursor_button.draw()
 
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
+                print event.button
                 for button in button_list:
-                    if(button.region_check()):
+                    if(button.region_check() and event.button == 1):
                         button.handle_event(event)
 
+                if(event.button == 4 and pygame.key.get_pressed()[K_LSHIFT]):          # Scroll Up
+                    if(CURSOR_SIZE > 229):
+                        CURSOR_SIZE = 230
+                    else:
+                        CURSOR_SIZE *= 1.35
+
+                if(event.button == 5 and pygame.key.get_pressed()[K_LSHIFT]):          # Scroll Down
+                    if(CURSOR_SIZE < 1):
+                        CURSOR_SIZE = 1
+                    else:
+                        CURSOR_SIZE /= 1.35
+
                 if ((quit_loc_x() < pygame.mouse.get_pos()[0] < (quit_w + quit_loc_x())) and
-                        quit_loc_y() < pygame.mouse.get_pos()[1] < (quit_h + quit_loc_y()) ):
+                        quit_loc_y() < pygame.mouse.get_pos()[1] < (quit_h + quit_loc_y()) and
+                        event.button == 1):
                     if debug:
                         print 'Exiting...'
                     if (profile):
                         pr.disable()
                         s = StringIO.StringIO()
                         sortby = 'cumulative'
-                        ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+                        ps = pstats.Stats(pr, stream=s.sort_stats(sortby))
                         ps.print_stats()
                         print s.getvalue()
                         log = open('profile_log', 'w')
