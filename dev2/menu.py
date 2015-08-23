@@ -12,6 +12,7 @@ import random
 import pygame.gfxdraw
 import cProfile, pstats, StringIO
 import ConfigParser
+import game_constants
 
 #   Custom Modules
 from _UIModule import buttons
@@ -123,7 +124,7 @@ if __name__ == '__main__':
 
     font = pygame.font.SysFont("monospace", font_size)
     title = pygame.font.SysFont("monospace",  24)
-    clock = pygame.time.Clock()
+    #game_constants.clock = pygame.time.Clock()
 
     button_list.append(settings)
     button_list.append(cursor_button)

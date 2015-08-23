@@ -1,6 +1,8 @@
 """
     Game Constants
 """
+import pygame
+from pygame.locals import *
 
 ##################################################################################################
 #   General Constants
@@ -15,6 +17,7 @@ test_box_h = 125 - 2
 line_ep1 = [10, 10, 3, 5.2]   # (x, y, speed_x, speed_y)
 line_ep2 = [20, 60, 4.2, -7]
 CURSOR_SIZE = 6
+clock = pygame.time.Clock()
 
 ##################################################################################################
 #   Color Definitions

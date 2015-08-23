@@ -5,7 +5,7 @@
 import sys
 sys.path.append("../")
 from game_constants import *
-from dev2 import *
+from menu import *
 import pygame
 
 quit_w = 53
